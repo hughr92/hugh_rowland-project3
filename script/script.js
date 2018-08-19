@@ -278,7 +278,8 @@ app.runFunction = (variable) => {
     } else if (variable == 4) {
         $(`.button--text--${buttonNum}`).text(variable);
         gameContainer.append(item);
-        variable = 0;
+        app.turnswap();
+        // variable = 0;
     } else {
         //
     }
@@ -303,12 +304,25 @@ app.takeTurn = function () {
 
         cellNum = ((buttonNum - 1) * 4) + app.counters[buttonNum - 1].count;
 
-            $(this).css('background', turnColor);
-
+        
         // RUN APPEND FUNCTION
-        app.runFunction(app.counters[buttonNum - 1].count);
+        let condition = parseInt($(`.button--text--${buttonNum}`).text());
+        
+        console.log(condition);
+        
+        if(condition < 4) {
+            console.log(condition);
+            $(this).css('background', turnColor);
+            
+            app.runFunction(app.counters[buttonNum - 1].count);
+    
+            app.checkWin();
 
-        app.checkWin();
+        } 
+        
+
+
+        
         
     })
 }
@@ -349,7 +363,7 @@ app.checkWin = function(){
             } if (winCondition == 'rgb(255, 99, 71)') {
                 // console.log(`c${i} red`);  
                 arrayRed.push('red');
-                // console.log(arrayRed);    
+                console.log(arrayRed);    
                 if (arrayRed.length == 4) {
                     app.gameWin('red');
                 } 
@@ -362,25 +376,33 @@ app.checkWin = function(){
     }
 
     for (i = 1; i <= 20; i++) {
-        let arrayBlue = [];
-        let arrayRed = [];
+        let arrayBlueR = [];
+        let arrayRedR = [];
         $(`.r${i}`).each(function () {
 
             let winCondition = $(this).css('background-color');
 
             if (winCondition == 'rgb(30, 144, 255)') {
                 // console.log(`r${i} blue`);
-                arrayBlue.push('blue');
+                arrayBlueR.push('blue');
                 // console.log(arrayBlue);   
                 // console.log(arrayBlue.length);
-                if (arrayBlue.length == 4) {
+                if (arrayBlueR.length == 4) {
+                    console.log(arrayBlueR);
+                    
+                    console.log('bug');
                     app.gameWin('blue');
                 }
             } if (winCondition == 'rgb(255, 99, 71)') {
                 // console.log(`r${i} red`);
-                arrayRed.push('red');
+                arrayRedR.push('red');
                 // console.log(arrayRed);    
-                if (arrayRed.length == 4) {
+                if (arrayRedR.length == 4) {
+                    console.log(arrayRedR);
+                    console.log(winCondition);
+                    
+                    console.log('bug');
+                    
                     app.gameWin('red');
                 }
             }
@@ -402,14 +424,14 @@ app.checkWin = function(){
                 // console.log(`d${i} blue`);
                 arrayBlue.push('blue');
                 // console.log(arrayBlue);   
-                // console.log(arrayBlue.length);
+                console.log(arrayBlue.length);
                 if (arrayBlue.length == 4) {
                     app.gameWin('blue');
                 }
             } if (winCondition == 'rgb(255, 99, 71)') {
                 // console.log(`d${i} red`);
                 arrayRed.push('red');
-                // console.log(arrayRed);    
+                console.log(arrayRed);    
                 if (arrayRed.length == 4) {
                     app.gameWin('red');
                     console.log(turn);
@@ -429,18 +451,20 @@ app.checkWin = function(){
 }
 
 app.gameWin = function(player){
+    
+    
     $('.win').css('display', 'flex');
     $('.win-player').text(`${player} player wins`);
-    $('.win-play-again').css('background-color', `${turnColor}`);
-    
-
     if (turnColor == 'dodgerblue'){
         turnColor = 'tomato';
+        $('.win-player').css('background-color', `${turnColor}`)
     } else if (turnColor == 'tomato') {
         turnColor = 'dodgerblue'
+        $('.win-player').css('background-color', `${turnColor}`)
+
     }
+    $('.win-play-again').css('background-color', `${turnColor}`);
     
-    $('.win-player').css('background-color', `${turnColor}`)
 }
 
 app.viewSide = function(side){
@@ -472,6 +496,15 @@ $('.side').on('click', function(){
 $('.win-play-again').on('click', function(){
     location.reload()
 });
+
+
+$('.menu-start').on('click', function(){
+    $('.menu').css('display', 'none');
+})
+
+$('.menu-open').on('click', function () {
+    $('.menu').css('display', 'flex');
+})
 
 
 

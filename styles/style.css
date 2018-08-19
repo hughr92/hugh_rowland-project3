@@ -134,7 +134,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 body {
   overflow: hidden;
-  background-color: #d7eeff; }
+  background-color: #d7eeff;
+  font-family: 'Montserrat', sans-serif; }
 
 .gameContainer {
   position: relative;
@@ -227,6 +228,7 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  z-index: 70;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg); }
@@ -239,6 +241,7 @@ body {
   padding: none;
   height: calc(100%/4); }
   .button--text {
+    color: white;
     position: absolute;
     left: 60%;
     top: -10%;
@@ -378,11 +381,9 @@ body {
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
-  display: none; }
+  align-items: center; }
   .menu-container {
     width: 300px;
-    border: 1px solid red;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -400,12 +401,34 @@ body {
     width: 100px;
     height: 100px; }
   .menu-button {
-    padding: 5px;
+    color: white;
+    padding: 10px 20px;
     border: none;
     background-color: transparent;
     text-transform: uppercase;
-    margin: 5px 0;
-    font-weight: 900; }
+    margin: 25px 0;
+    font-weight: 900;
+    font-size: 22px;
+    background-color: dodgerblue;
+    border-radius: 10px; }
+    .menu-button:hover {
+      background-color: tomato; }
+  .menu-start {
+    letter-spacing: 2px; }
+  .menu-open {
+    z-index: 500;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    background-image: url("../assets/logo-2.png");
+    background-size: 100% 100%; }
+    .menu-open:hover {
+      background-image: url("../assets/logo-2-hover.png");
+      background-size: 100% 100%; }
 
 @media (max-width: 775px) {
   .gameContainer {
@@ -504,3 +527,104 @@ body {
       -webkit-transform: translate(50%, -50%);
       -ms-transform: translate(50%, -50%);
       transform: translate(50%, -50%); } }
+
+@media (max-height: 660px) {
+  .board {
+    bottom: 0;
+    width: 100%;
+    height: 157.5px;
+    position: absolute;
+    background: url("../assets/board-1.png");
+    background-size: 100% 100%; }
+  .box {
+    position: absolute;
+    height: 75px;
+    width: 25%;
+    opacity: 1; }
+    .box--bot--1 {
+      bottom: 13px; }
+    .box--bot--2 {
+      bottom: 31px; }
+    .box--bot--3 {
+      bottom: 48px; }
+    .box--bot--4 {
+      bottom: 66px; }
+    .box--bot--5 {
+      bottom: 84px; }
+    .box--bot--6 {
+      bottom: 102px; }
+    .box--bot--7 {
+      bottom: 120.5px; }
+    .box--bot--8 {
+      bottom: 139px; }
+    .box--bot--9 {
+      bottom: 156px; }
+    .box--bot--10 {
+      bottom: 176px; }
+    .box--bot--11 {
+      bottom: 194px; }
+    .box--bot--12 {
+      bottom: 213px; }
+    .box--bot--13 {
+      bottom: 230px; } }
+
+@media (max-height: 560px) {
+  .selector {
+    top: 30px;
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    border: 0.5px solid black;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    z-index: 70; }
+  .button {
+    border: 0.5px solid black; }
+    .button--text {
+      left: 70%;
+      top: -25%;
+      -webkit-transform: rotate(-45deg) translate(-50%, -50%);
+      -ms-transform: rotate(-45deg) translate(-50%, -50%);
+      transform: rotate(-45deg) translate(-50%, -50%);
+      font-size: 12px; }
+  .board {
+    bottom: 0;
+    width: 100%;
+    height: 105px;
+    position: absolute;
+    background: url("../assets/board-1.png");
+    background-size: 100% 100%; }
+  .box {
+    position: absolute;
+    height: 50px;
+    width: 25%;
+    opacity: 1; }
+    .box--bot--1 {
+      bottom: 8px; }
+    .box--bot--2 {
+      bottom: 20px; }
+    .box--bot--3 {
+      bottom: 32px; }
+    .box--bot--4 {
+      bottom: 44.5px; }
+    .box--bot--5 {
+      bottom: 57.5px; }
+    .box--bot--6 {
+      bottom: 68.5px; }
+    .box--bot--7 {
+      bottom: 80.5px; }
+    .box--bot--8 {
+      bottom: 93px; }
+    .box--bot--9 {
+      bottom: 105px; }
+    .box--bot--10 {
+      bottom: 117.5px; }
+    .box--bot--11 {
+      bottom: 129.5px; }
+    .box--bot--12 {
+      bottom: 142px; }
+    .box--bot--13 {
+      bottom: 154px; } }
