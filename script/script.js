@@ -13,12 +13,12 @@ app.turnswap = function() {
         turn = 'red';
         turnColor = 'tomato';
         console.log('now it is red turn');
-        $('.player-turn').css('color', 'tomato').text('player 2');
+        $('.player-turn').css('background-color', 'tomato').text('p2\'s turn');
     } else if (turn == 'red') {
         turn = 'blue';
         turnColor = 'dodgerblue'
         console.log('now it is blue turn'); 
-        $('.player-turn').css('color', 'dodgerblue').text('player 1'); 
+        $('.player-turn').css('background-color', 'dodgerblue').text('p1\'s turn'); 
     }
     
 }
@@ -429,8 +429,53 @@ app.checkWin = function(){
 }
 
 app.gameWin = function(player){
-    alert(`${player} player wins`)
+    $('.win').css('display', 'flex');
+    $('.win-player').text(`${player} player wins`);
+    $('.win-play-again').css('background-color', `${turnColor}`);
+    
+
+    if (turnColor == 'dodgerblue'){
+        turnColor = 'tomato';
+    } else if (turnColor == 'tomato') {
+        turnColor = 'dodgerblue'
+    }
+    
+    $('.win-player').css('background-color', `${turnColor}`)
 }
+
+app.viewSide = function(side){
+    $(`.side-selector--${side}`).on('click', function(){
+
+    })
+}
+
+
+
+$('label').on('click', function(){
+    
+    side = $(this).text();
+    
+    $('.side--show').removeClass('side--show');
+    $(`.side--${side}`).addClass('side--show');
+    
+    
+})
+
+$('.side').on('click', function(){
+    if ($(window).width() <= 610) {
+        // do something here
+        $(this).removeClass('side--show');
+    }
+})
+
+
+$('.win-play-again').on('click', function(){
+    location.reload()
+});
+
+
+
+
 
 
 

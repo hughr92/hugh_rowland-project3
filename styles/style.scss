@@ -4,56 +4,37 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-.gameContainer {
-    position: relative;
-    width: 400px;
-    height: 100vh;
-    border: 1px solid black;
-    margin: 0 auto;
-    // &:hover .box--red{
-    //     background: url('../assets/cube-red-2.png');
-    //     background-size: 100% 100%;
-    // }
-    // &:hover .box--blue{
-    //     background: url('../assets/cube-blue-2.png');
-    //     background-size: 100% 100%;
-    // }
+body {
+    overflow: hidden;
+    background-color: #d7eeff;
 }
 
-// .hide {
-//     position: absolute;
-//     width: 50px;
-//     height: 50px;
-//     right: 0;
-//     cursor: pointer;
-//     &--red {
-//         background-color: tomato;
-//         top: 90px;
-//         &:hover .box--red{
-//             background: url('../assets/cube-red-2.png');
-//             background-size: 100% 100%; 
-//         }
-//     }
-//     &--blue {
-//         background-color: dodgerblue;
-//         top: 150px;
-//         &:hover .box--blue{
-//             background: url('../assets/cube-blue-2.png');
-//             background-size: 100% 100%; 
-//         }
-//     }
-// }
+.gameContainer {
+    position: relative;
+    max-width: 400px;
+    height: calc(100vh - 20px);
+    border: none;
+    margin: 0 auto;
+    
+}
+
 
 .player-turn {
-    color: dodgerblue;
+    background-color: dodgerblue;
+    letter-spacing: 1px;
     text-transform: uppercase;
     position: absolute;
-    right: 0;
+    font-size: 15px;
+    color: white;
+    left: 0;
+    top: -15px;
+    padding: 10px;
+    border-radius: 0 0 10px 0px;
 }
 
 .board {
     bottom: 0;
-    width: 400px;
+    width: 100%;
     height: 210px;
     position: absolute;
     background: url('../assets/board-1.png');
@@ -70,28 +51,28 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     // border: 1px solid black;
     position: absolute;
     height: 100px;
-    width: 100px;
+    width: 25%;
     opacity: 1;
     &--left--1 {
-        left: 0px;
+        left: 0%;
     }
     &--left--2 {
-        left: 50px;
+        left: 12.5%;
     }
     &--left--3 {
-        left: 100px;
+        left: 25%;
     }
     &--left--4 {
-        left: 150px;
+        left: 37.5%;
     }
     &--left--5 {
-        left: 200px;
+        left: 50%;
     }
     &--left--6 {
-        left: 250px;
+        left: 62.5%;
     }
     &--left--7 {
-        left: 300px;
+        left: 75%;
     }
     // bottom
     &--bot--1 {
@@ -160,20 +141,28 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 }
 
 .selector {
-    width: 200px;
-    height: 200px;
-    border: 1px solid green;
-    display: flex;
-    flex-wrap: wrap;
     position: absolute;
     top: 50px;
-    left: 50px;
-    transform: rotate(45deg)
+    left: calc(50% - 75px);
+    // margin-top: 100px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    // position: absolute;
+    // top: 50px;
+    // left: 50px;
+    transform: rotate(45deg) ;
 }
 
 .button {
+    position: relative;
     &--text {
-        transform: rotate(-45deg);
+        position: absolute;
+        left: 60%;
+        top: -10%;
+        transform: rotate(-45deg) translate(-50%, -50%);
         font-size: 15px;
         font-weight: 500;
     }
@@ -183,7 +172,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     // border: none;
     width: calc(100%/4);
     padding: none;
-    height: 50px;
+    height: calc(100%/4);
     &--blue {
         background-color: dodgerblue;
     }
@@ -206,29 +195,232 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     height: 150px;
     display: flex;
     flex-wrap: wrap;
+    transform: translateY(50%);
     &--front {
-        bottom: 20px;
+        bottom: calc(50% - 100px);
         right: -170px;
     }
     &--back {
-        bottom: 220px;
-        left: -170px;
+        bottom: calc(50% + 100px);
+        right: 420px;
     }
     &--left {
-        bottom: 20px;
-        left: -170px;
+        bottom: calc(50% - 100px);
+        right: 420px;
     }
     &--right {
-        bottom: 220px;
+        bottom: calc(50% + 100px);
         right: -170px;
     }
     &-header {
+        text-transform: uppercase;
+        font-size: 15px;
+        width: 150px;
+        color: white;
+        text-align: center;
+        background-color: black;
         position: absolute;
-        top: -50px;
+        top: -40px;
+        left: -1px;
+        padding: 5px 0;
     }
     &-box {
         width: calc(100%/4);
         border: 1px solid black;
         height: calc(100%/4);
+        background-color: white;
+    }
+}
+
+.side-selector {
+    display: none;
+}
+
+
+.win {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    &-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    &-player {
+        text-transform: uppercase;
+        font-size: 20px;
+        color: white;
+        background-color: black;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    &-play-again {
+        text-transform: uppercase;
+        color: white;
+        font-size: 15px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        text-align: center;
+        margin: 0 auto;    
+    }
+}
+
+.menu {
+    z-index: 500;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    &-container {
+        width: 300px;
+        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    &-logo {
+        width: 100px;
+        height: 100px;
+    }
+    &-button {
+        padding: 5px;
+        border: none;
+        background-color: transparent;
+        text-transform: uppercase;
+        margin: 5px 0;
+        font-weight: 900;
+    }
+}
+
+@media (max-width: 775px) {
+    .gameContainer {
+        margin: 0;
+        margin-left: 20px;
+    }
+
+    .side {
+
+        &--front {
+            bottom: 50%;
+            right: -500px;
+        }
+        &--back {
+            bottom: 50%;
+            right:-500px;
+        }
+        &--left {
+            bottom: 50%;
+            right:-500px;
+        }
+        &--right {
+            bottom: 50%;
+            right: -500px;
+        }
+        &--show {
+            right: -170px;
+            z-index: 100;
+        }
+    }
+
+    .side-selector {
+        z-index: 150;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        // overflow: hidden;
+        // display: block;
+        display: flex;
+        flex-direction: column;
+        &-button {
+            transition: all .6s;
+            width: 20px;
+            height: 40px;
+            background-color: tomato;
+            border: none;
+            margin-bottom: 1px;
+            &:hover {
+                background-color: dodgerblue;
+            }
+            &:hover label {
+                left: 0px;
+                background-color: dodgerblue;
+            }
+            & label {
+                text-transform: capitalize;
+                cursor: pointer;
+                transition: all .6s;
+                background-color: tomato;
+                height: 40px;
+                color: white;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                padding: 10px;
+                padding-left: 15px;
+                position: absolute;
+                left: -70px;
+                transform: translateY(-50%);
+                &:hover {
+                    // padding-left: 50px;
+                    background-color: dodgerblue;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 610px) {
+    .gameContainer {
+        margin: 0 auto;
+    }
+    .side {
+        cursor: pointer;
+        &:hover {
+            box-shadow: 8px 5px 20px grey;
+        }
+        &--front {
+            bottom: 50%;
+            right: -300px;
+        }
+        &--back {
+            bottom: 50%;
+            right: -300px;
+        }
+        &--left {
+            bottom: 50%;
+            right: -300px;
+        }
+        &--right {
+            bottom: 50%;
+            right: -300px;
+        }
+        &--show {
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+        }
     }
 }

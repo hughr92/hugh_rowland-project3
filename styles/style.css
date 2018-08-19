@@ -132,22 +132,32 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+body {
+  overflow: hidden;
+  background-color: #d7eeff; }
+
 .gameContainer {
   position: relative;
-  width: 400px;
-  height: 100vh;
-  border: 1px solid black;
+  max-width: 400px;
+  height: calc(100vh - 20px);
+  border: none;
   margin: 0 auto; }
 
 .player-turn {
-  color: dodgerblue;
+  background-color: dodgerblue;
+  letter-spacing: 1px;
   text-transform: uppercase;
   position: absolute;
-  right: 0; }
+  font-size: 15px;
+  color: white;
+  left: 0;
+  top: -15px;
+  padding: 10px;
+  border-radius: 0 0 10px 0px; }
 
 .board {
   bottom: 0;
-  width: 400px;
+  width: 100%;
   height: 210px;
   position: absolute;
   background: url("../assets/board-1.png");
@@ -156,22 +166,22 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 .box {
   position: absolute;
   height: 100px;
-  width: 100px;
+  width: 25%;
   opacity: 1; }
   .box--left--1 {
-    left: 0px; }
+    left: 0%; }
   .box--left--2 {
-    left: 50px; }
+    left: 12.5%; }
   .box--left--3 {
-    left: 100px; }
+    left: 25%; }
   .box--left--4 {
-    left: 150px; }
+    left: 37.5%; }
   .box--left--5 {
-    left: 200px; }
+    left: 50%; }
   .box--left--6 {
-    left: 250px; }
+    left: 62.5%; }
   .box--left--7 {
-    left: 300px; }
+    left: 75%; }
   .box--bot--1 {
     bottom: 16px; }
   .box--bot--2 {
@@ -206,31 +216,35 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     background-size: 100% 100%; }
 
 .selector {
-  width: 200px;
-  height: 200px;
-  border: 1px solid green;
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 75px);
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  position: absolute;
-  top: 50px;
-  left: 50px;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg); }
 
 .button {
+  position: relative;
   display: inline-block;
   border: 2px solid black;
   width: calc(100%/4);
   padding: none;
-  height: 50px; }
+  height: calc(100%/4); }
   .button--text {
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    position: absolute;
+    left: 60%;
+    top: -10%;
+    -webkit-transform: rotate(-45deg) translate(-50%, -50%);
+    -ms-transform: rotate(-45deg) translate(-50%, -50%);
+    transform: rotate(-45deg) translate(-50%, -50%);
     font-size: 15px;
     font-weight: 500; }
   .button--blue {
@@ -251,23 +265,242 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%); }
   .side--front {
-    bottom: 20px;
+    bottom: calc(50% - 100px);
     right: -170px; }
   .side--back {
-    bottom: 220px;
-    left: -170px; }
+    bottom: calc(50% + 100px);
+    right: 420px; }
   .side--left {
-    bottom: 20px;
-    left: -170px; }
+    bottom: calc(50% - 100px);
+    right: 420px; }
   .side--right {
-    bottom: 220px;
+    bottom: calc(50% + 100px);
     right: -170px; }
   .side-header {
+    text-transform: uppercase;
+    font-size: 15px;
+    width: 150px;
+    color: white;
+    text-align: center;
+    background-color: black;
     position: absolute;
-    top: -50px; }
+    top: -40px;
+    left: -1px;
+    padding: 5px 0; }
   .side-box {
     width: calc(100%/4);
     border: 1px solid black;
-    height: calc(100%/4); }
+    height: calc(100%/4);
+    background-color: white; }
+
+.side-selector {
+  display: none; }
+
+.win {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: none; }
+  .win-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .win-player {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    padding: 10px 20px;
+    border-radius: 5px; }
+  .win-play-again {
+    text-transform: uppercase;
+    color: white;
+    font-size: 15px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    margin: 0 auto; }
+
+.menu {
+  z-index: 500;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: none; }
+  .menu-container {
+    width: 300px;
+    border: 1px solid red;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .menu-logo {
+    width: 100px;
+    height: 100px; }
+  .menu-button {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    text-transform: uppercase;
+    margin: 5px 0;
+    font-weight: 900; }
+
+@media (max-width: 775px) {
+  .gameContainer {
+    margin: 0;
+    margin-left: 20px; }
+  .side--front {
+    bottom: 50%;
+    right: -500px; }
+  .side--back {
+    bottom: 50%;
+    right: -500px; }
+  .side--left {
+    bottom: 50%;
+    right: -500px; }
+  .side--right {
+    bottom: 50%;
+    right: -500px; }
+  .side--show {
+    right: -170px;
+    z-index: 100; }
+  .side-selector {
+    z-index: 150;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .side-selector-button {
+      -webkit-transition: all .6s;
+      -o-transition: all .6s;
+      transition: all .6s;
+      width: 20px;
+      height: 40px;
+      background-color: tomato;
+      border: none;
+      margin-bottom: 1px; }
+      .side-selector-button:hover {
+        background-color: dodgerblue; }
+      .side-selector-button:hover label {
+        left: 0px;
+        background-color: dodgerblue; }
+      .side-selector-button label {
+        text-transform: capitalize;
+        cursor: pointer;
+        -webkit-transition: all .6s;
+        -o-transition: all .6s;
+        transition: all .6s;
+        background-color: tomato;
+        height: 40px;
+        color: white;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 10px;
+        padding-left: 15px;
+        position: absolute;
+        left: -70px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%); }
+        .side-selector-button label:hover {
+          background-color: dodgerblue; } }
+
+@media (max-width: 610px) {
+  .gameContainer {
+    margin: 0 auto; }
+  .side {
+    cursor: pointer; }
+    .side:hover {
+      -webkit-box-shadow: 8px 5px 20px grey;
+      box-shadow: 8px 5px 20px grey; }
+    .side--front {
+      bottom: 50%;
+      right: -300px; }
+    .side--back {
+      bottom: 50%;
+      right: -300px; }
+    .side--left {
+      bottom: 50%;
+      right: -300px; }
+    .side--right {
+      bottom: 50%;
+      right: -300px; }
+    .side--show {
+      top: 50%;
+      right: 50%;
+      -webkit-transform: translate(50%, -50%);
+      -ms-transform: translate(50%, -50%);
+      transform: translate(50%, -50%); } }
