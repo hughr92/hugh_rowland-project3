@@ -13,12 +13,12 @@ app.turnswap = function() {
         turn = 'red';
         turnColor = 'tomato';
         console.log('now it is red turn');
-        $('.player-turn').css('background-color', 'tomato').text('p2\'s turn');
+        $('.player-turn').css('background-color', 'tomato').text('red\'s turn');
     } else if (turn == 'red') {
         turn = 'blue';
         turnColor = 'dodgerblue'
         console.log('now it is blue turn'); 
-        $('.player-turn').css('background-color', 'dodgerblue').text('p1\'s turn'); 
+        $('.player-turn').css('background-color', 'dodgerblue').text('blue\'s turn'); 
     }
     
 }

@@ -5,6 +5,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 body {
+    // width: 100vw;
     overflow: hidden;
     background-color: #d7eeff;
     font-family: 'Montserrat', sans-serif;
@@ -507,27 +508,27 @@ body {
 }
 
 @media (max-height: 560px){
-    .selector {
-        top: 30px;
-        left: calc(50% - 50px);
-        // margin-top: 100px;
-        width: 100px;
-        height: 100px;
-        border: 0.5px solid black;
-        display: flex;
-        flex-wrap: wrap;
-        z-index: 70;
-    }
+    // .selector {
+    //     top: 30px;
+    //     left: calc(50% - 50px);
+    //     // margin-top: 100px;
+    //     width: 100px;
+    //     height: 100px;
+    //     border: 0.5px solid black;
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     z-index: 70;
+    // }
 
-    .button {
-        border: 0.5px solid black;
-        &--text {
-            left: 70%;
-            top: -25%;
-            transform: rotate(-45deg) translate(-50%, -50%);
-            font-size: 12px;
-        }
-    }
+    // .button {
+    //     border: 0.5px solid black;
+    //     &--text {
+    //         left: 70%;
+    //         top: -25%;
+    //         transform: rotate(-45deg) translate(-50%, -50%);
+    //         font-size: 12px;
+    //     }
+    // }
    
 
     .board {
