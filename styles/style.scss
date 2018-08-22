@@ -6,9 +6,12 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 body {
     // width: 100vw;
-    overflow: hidden;
     background-color: #d7eeff;
     font-family: 'Montserrat', sans-serif;
+}
+
+.masterWrapper {
+    overflow: hidden;
 }
 
 .gameContainer {
@@ -415,6 +418,9 @@ body {
 }
 
 @media (max-width: 610px) {
+
+    // change these later to bottom, rather than to the right
+
     .gameContainer {
         margin: 0 auto;
     }

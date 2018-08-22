@@ -133,9 +133,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 body {
-  overflow: hidden;
   background-color: #d7eeff;
   font-family: 'Montserrat', sans-serif; }
+
+.masterWrapper {
+  overflow: hidden; }
 
 .gameContainer {
   position: relative;

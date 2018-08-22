@@ -495,12 +495,17 @@ $('.side').on('click', function(){
 
 $('.win-play-again').on('click', function(){
     location.reload()
+    app.startGame();
 });
 
 
-$('.menu-start').on('click', function(){
-    $('.menu').css('display', 'none');
-})
+app.startGame = function(){
+    $('.menu-start').on('click', function(){
+        $('.menu').css('display', 'none');
+    })
+}
+
+app.startGame();
 
 $('.menu-open').on('click', function () {
     $('.menu').css('display', 'flex');
