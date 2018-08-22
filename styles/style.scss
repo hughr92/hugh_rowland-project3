@@ -180,7 +180,7 @@ body {
         background-color: red;
     }
     &:hover {
-        background: grey;
+        // background: grey;
     }
     &:active {
         border: none;
@@ -424,6 +424,12 @@ body {
     .gameContainer {
         margin: 0 auto;
     }
+
+    // .button {
+    //     &:hover {
+            
+    //     }
+    // }
     .side {
         cursor: pointer;
         &:hover {

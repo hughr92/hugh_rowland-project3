@@ -256,8 +256,6 @@ body {
     background-color: dodgerblue; }
   .button--red {
     background-color: red; }
-  .button:hover {
-    background: grey; }
   .button:active {
     border: none; }
 
